@@ -321,7 +321,7 @@ const Reports = () => {
                           <div
                             className="bg-primary h-2.5 rounded-full"
                             style={{
-                              width: `${(item.amount / filteredTotal) * 100}%`,
+                              width: `${Math.max((item.amount / filteredTotal) * 100, 0)}%`,
                             }}
                           ></div>
                         </div>

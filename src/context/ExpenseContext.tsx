@@ -43,7 +43,7 @@ const categories = [
 const generateSampleExpenses = () => {
   const sampleExpenses: Expense[] = [];
   
-  // Create 10 sample expenses
+  // Create 20 sample expenses
   for (let i = 0; i < 20; i++) {
     const category = categories[Math.floor(Math.random() * categories.length)];
     const amount = Math.floor(Math.random() * 200) + 5;
@@ -129,13 +129,15 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
   );
 
   // Calculate expenses by category
-  const expensesByCategory = categories.map((category) => {
-    const amount = expenses
-      .filter((expense) => expense.category === category)
-      .reduce((total, expense) => total + expense.amount, 0);
-    
-    return { category, amount };
-  }).filter(item => item.amount > 0);
+  const expensesByCategory = categories
+    .map((category) => {
+      const amount = expenses
+        .filter((expense) => expense.category === category)
+        .reduce((total, expense) => total + expense.amount, 0);
+      
+      return { category, amount };
+    })
+    .filter(item => item.amount > 0);
 
   return (
     <ExpenseContext.Provider

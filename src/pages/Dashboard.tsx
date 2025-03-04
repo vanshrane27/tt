@@ -24,7 +24,7 @@ const Dashboard = () => {
   const highestExpenseCategory = expensesByCategory.length > 0
     ? expensesByCategory.reduce((prev, current) => {
         return prev.amount > current.amount ? prev : current;
-      })
+      }, { category: "None", amount: 0 })
     : { category: "None", amount: 0 };
 
   return (
